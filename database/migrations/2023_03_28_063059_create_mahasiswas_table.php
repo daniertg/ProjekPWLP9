@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
-            $table->integer('Nim')->primary();
-            $table->string('Nama',50)->nullable();
-            $table->string('Kelas',10)->nullable();
-            $table->string('Jurusan',50)->nullable();
-            $table->string('No_Handphone',20)->nullable();
+            $table->integer('nim')->primary();
+            $table->string('nama',50);
+            $table->string('kelas',10);
+            $table->string('jurusan',50);
+            $table->string('no_hp',20)->nullable();
         });
     }
 

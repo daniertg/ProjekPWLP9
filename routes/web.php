@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\MahasiswaController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('mahasiswas/nilai/{nim}', [MahasiswaController::class, 'khs']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('mahasiswas', MahasiswaController::class);
-Route::get('mahasiswas/nilai/{Nim}', 'App\Http\Controllers\MahasiswaController@nilai')->name('mahasiswas.nilai');
-

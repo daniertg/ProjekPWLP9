@@ -35,13 +35,12 @@ class MataKuliahSeeder extends Seeder
                 'semester' => 4,
             ],
             [
-                'nama_matkul' => 'Praktikum Basis Data Lanjut',
+                'nama_matkul' => 'Pemrograman Basis Data Lanjut',
                 'sks' => 3,
                 'jam' => 6,
                 'semester' => 4,
             ],
         ];
-
         DB::table('matakuliah')->insert($matkul);
     }
 }

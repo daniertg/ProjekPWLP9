@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('mahasiswas', function (Blueprint $table) {
-            $table->String('Email', 50)->after('No_Handphone')->nullable();
-            $table->String('Tanggal_Lahir', 50)->after('Email')->nullable();
+            $table->dropColumn('kelas'); // menghapus kolom kelas
+            $table->unsignedBigInteger('kelas_id')->nullable(); // menambahkan kolom kelas_id
+            $table->foreign('kelas_id')->references('id')->on('kelas'); //menambahkan foreign key di kolom kelas_id
         });
     }
 
@@ -27,8 +28,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('mahasiswas', function (Blueprint $table) {
-            $table->dropColumn('Email');
-            $table->dropColumn('Tanggal_Lahir');
+            $table->string('kelas');
+            $table->dropForeign(['kelas_id']);
         });
     }
 };
