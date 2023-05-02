@@ -15,7 +15,6 @@ class MataKuliahSeeder extends Seeder
      */
     public function run()
     {
-        //
         $matkul = [
             [
                 'nama_matkul' => 'Pemrograman Berbasis Objek',

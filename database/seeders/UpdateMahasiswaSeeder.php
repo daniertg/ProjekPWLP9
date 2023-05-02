@@ -15,7 +15,6 @@ class UpdateMahasiswaSeeder extends Seeder
      */
     public function run()
     {
-        //
         DB::table('mahasiswas')->update(['kelas_id' => 1]);
     }
 }

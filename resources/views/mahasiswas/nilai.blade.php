@@ -1,38 +1,41 @@
 @extends('mahasiswas.layout')
 @section('content')
-<div class="container mt-2 text-center">
-    <h2 class="mb-4">Jurusan Teknologi Informasi - Politeknik Negeri Malang</h2>
-    <h2 class="mb-4">KARTU HASIL STUDI (KHS)</h2>
-    <ul class="list-group list-group-flush text-left mb-4">
-        <li class="list-group-item"><b>Nim: </b>{{$Mahasiswa->nim}}</li>
-        <li class="list-group-item"><b>Nama: </b>{{$Mahasiswa->nama}}</li>
-        <li class="list-group-item"><b>Kelas: </b>{{$Mahasiswa->kelas->nama_kelas}}</li>
-    </ul>
-    <div class="row justify-content-center align-items-center">
-        <div class="card" style="width: 70rem;">
-            <div class="card-header bg-dark text-white">
-                Nilai Mahasiswa
-            </div>
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <tr>
-                        <th>Mata_Kuliah</th>
-                        <th>SKS</th>
-                        <th>Semester</th>
-                        <th>Nilai</th>
-                    </tr>
-                    @foreach ($Mahasiswa->mataKuliah as $matkul)
-                    <tr>
-                        <td>{{ $matkul->nama_matkul }}</td>
-                        <td>{{ $matkul->sks }}</td>
-                        <td>{{ $matkul->semester }}</td>
-                        <td>{{ $matkul->pivot->nilai }}</td>
-                    </tr>
-                    @endforeach
-                </table>
-            </div>
-            <a class="btn btn-success mt-3" href="{{ route('mahasiswas.index') }}">Kembali</a>
-        </div>
-    </div>
+<div class="container mt-5">
+<center>
+<div class="card-header">
+JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG
+
+<h1>KARTU HASIL STUDI (KHS)</h1>
+</div>
+</center>
+<div class="identity">
+<ol><b>Nama: </b>{{$Mahasiswa->Nama}}</ol>
+<ol><b>Nim: </b>{{$Mahasiswa->Nim}}</ol>
+<ol><b>Kelas: </b>{{$Mahasiswa->kelas->nama_kelas}}</ol>
+</div>
+<div class="row justify-content-center align-items-center">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Mata Kuliah</th>
+      <th scope="col">SKS</th>
+      <th scope="col">Semester</th>
+      <th scope="col">Nilai</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach ($Mahasiswa->mataKuliah as $list)
+    <tr>
+      <td>{{$list->nama_matkul}}</td>
+      <td>{{$list->sks}}</td>
+      <td>{{$list->semester}}</td>
+      <td>{{$list->pivot->nilai}}</td>
+    </tr>
+    @endforeach
+  </tbody>
+</table>
+<a class="btn btn-success mt-
+3" href="{{ route('mahasiswas.index') }}">Kembali</a>
+</div>
 </div>
 @endsection
