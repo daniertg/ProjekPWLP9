@@ -1,8 +1,11 @@
 <?php
+
 namespace Database\Seeders;
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+
 class MataKuliahSeeder extends Seeder
 {
     /**
@@ -33,12 +36,13 @@ class MataKuliahSeeder extends Seeder
                 'semester' => 4,
             ],
             [
-                'nama_matkul' => 'Pemrograman Basis Data Lanjut',
+                'nama_matkul' => 'Praktikum Basis Data Lanjut',
                 'sks' => 3,
                 'jam' => 6,
                 'semester' => 4,
             ],
         ];
+
         DB::table('matakuliah')->insert($matkul);
     }
 }
