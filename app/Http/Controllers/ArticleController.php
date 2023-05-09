@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-
+use PDF;
 
 class ArticleController extends Controller
 {
@@ -16,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('articles.create');
+        //
     }
 
     /**
@@ -39,16 +38,22 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         //
-        if($request-> file('image')){
+        $image_name = 'unknown';
+
+        if ($request->file('image')) {
             $image_name = $request->file('image')->store('images', 'public');
         }
-        Article::create([
-             'title' => $request->title,
-             'content' => $request->content,
-             'featured_image' => $image_name,
 
+        Article::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'featured_image' => $image_name,
         ]);
-        return 'Artikel berhasil di simpan';
+        // return 'Artikel berhasil disimpan';
+        $message = 'Artikel berhasil disimpan!';
+        echo "<script>alert('".$message."');</script>";
+
+        return view('articles.create');
     }
 
     /**
@@ -68,9 +73,12 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit($id)
     {
         //
+        $article = Article::find($id);
+
+        return view('articles.edit', ['article' => $article]);
     }
 
     /**
@@ -80,21 +88,28 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id )
+    public function update(Request $request, $id)
     {
         //
         $article = Article::find($id);
+
         $article->title = $request->title;
         $article->content = $request->content;
+        // $image_name = $article->featured_image;
 
         if ($article->featured_image && file_exists(storage_path('app/public/'.$article->featured_image))) {
-            Storage::delete('public/'.$article->featured_image);
+            \Storage::delete('public/'.$article->featured_image);
         }
+
         $image_name = $request->file('image')->store('images', 'public');
         $article->featured_image = $image_name;
 
         $article->save();
-        return view ('articles.edit',['article'=>$article]);
+
+        $message = 'Artikel berhasil diupdate!';
+        echo "<script>alert('".$message."');</script>";
+
+        return view('articles.edit', ['article' => $article]);
     }
 
     /**
@@ -106,5 +121,13 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         //
+    }
+
+    public function cetak_pdf() {
+        $articles = Article::all();
+
+        $pdf = PDF::loadview('articles.cetak_pdf', ['articles' => $articles]);
+
+        return $pdf->stream();
     }
 }
