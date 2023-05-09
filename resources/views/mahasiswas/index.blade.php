@@ -29,8 +29,9 @@
     <tr>
         <th>Nim</th>
         <th>Nama</th>
-        <th>Tanggal Lahir</th>
+        <th>Foto</th>
         <th>Kelas</th>
+        <th>Tanggal Lahir</th>
         <th>Jurusan</th>
         <th>Email</th>
         <th>No_HP</th>
@@ -40,6 +41,8 @@
     <tr>
         <td>{{ $Mahasiswa->nim }}</td>
         <td>{{ $Mahasiswa->nama }}</td>
+        <td><img src="{{asset('storage/'.$Mahasiswa->foto_mhs)}}" alt="foto_mhs" style="height: 100px; width: 100px; overflow: hidden; object-fit: cover;"></td>
+        <td>{{ $Mahasiswa->kelas->nama_kelas }}</td>
         <td>{{ $Mahasiswa->tanggal_lahir }}</td>
         <td>{{ $Mahasiswa->kelas->nama_kelas }}</td>
         <td>{{ $Mahasiswa->jurusan }}</td>

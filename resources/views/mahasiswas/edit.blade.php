@@ -36,8 +36,13 @@
                         </div>
                         <div class="form-group">
                             <label for="tanggal_lahir">Tanggal Lahir (yyyy-mm-dd)</label>
-                            <input type="text" name="tanggal_lahir" class="form-control" id="tanggal_lahir"
+                            <input type="date" name="tanggal_lahir" class="form-control" id="tanggal_lahir"
                                 value="{{ $Mahasiswa->tanggal_lahir }}" aria-describedby="tanggal_lahir">
+                        </div>
+                        <div class="form-group">
+                            <label for="foto_mhs">Foto</label>
+                            <input type="file" class="form-control" required="required" name="foto_mhs" value="{{$Mahasiswa->foto_mhs}}" placeholder="{{$Mahasiswa->foto_mhs}}"></br>
+                            <img src="{{asset('storage/'.$Mahasiswa->foto_mhs)}}" alt="foto_mhs" style="height: 100px; width: 100px; overflow: hidden; object-fit: cover;">
                         </div>
                         <div class="form-group">
                             <label for="kelas">Kelas</label>

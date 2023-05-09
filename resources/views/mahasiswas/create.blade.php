@@ -31,8 +31,12 @@
                             <input type="text" name="nama" class="form-control" id="nama" ariadescribedby="nama">
                         </div>
                         <div class="form-group">
+                            <label for="foto_mhs">Foto</label>
+                            <input type="file" name="foto_mhs" class="form-control" required="required">
+                        </div>
+                        <div class="form-group">
                             <label for="tanggal_lahir">Tanggal Lahir (yyyy-mm-dd) </label>
-                            <input type="text" name="tanggal_lahir" class="form-control" id="tanggal_lahir" ariadescribedby="tanggal_lahir">
+                            <input type="date" name="tanggal_lahir" class="form-control" id="tanggal_lahir" ariadescribedby="tanggal_lahir">
                         </div>
                         <div class="form-group">
                             <label for="kelas">Kelas</label>
