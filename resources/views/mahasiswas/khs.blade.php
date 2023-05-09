@@ -35,5 +35,6 @@
         </tbody>
     </table>
     <a href="{{ route('mahasiswas.index') }}" class="btn btn-success">Kembali</a>
+    <a href="{{ route('mahasiswas.cetak', $Mahasiswa->nim) }}" class="btn btn-warning">Cetak PDF</a>
 </div>
 @endsection
